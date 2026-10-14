@@ -39,6 +39,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.parallel.ResourceLock;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,7 +69,7 @@ class BlockTypeStateListTest {
         BlockRegistry blockRegistry = new BundledBlockRegistry() {
             @Override
             public Map<String, ? extends Property<?>> getProperties(BlockType blockType) {
-                return PROPERTIES.getOrDefault(blockType.getId(), Map.of());
+                return PROPERTIES.getOrDefault(blockType.getId(), Collections.emptyMap());
             }
         };
         when(MOCKED_PLATFORM.getRegistries()).thenReturn(new BundledRegistries() {
